@@ -1,12 +1,11 @@
 import socket
 import time
-import pickle
 
 # Standard size used for the header message
 header = 64
 # Port and IP Socket settings defined for server
 port = 5050 # Server's definer port
-server_ip = "20.91.176.137"
+server_ip = "192.168.137.247"
 print(server_ip) # Debug
 addr = (server_ip, port)
 
@@ -35,10 +34,15 @@ def send(msg):
     print(msg) # Debug
     print(msg_length) # Debug
 
+
+
 test_list = ["Besked 1", "Besked 2", "Besked 3","Besked 4"]
 
 # Run the main send function to send the message "Hej" to the server
 #send("Hej") 
+"""
 for x in test_list:
     time.sleep(0.5)
     send(x)
+
+"""
