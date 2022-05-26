@@ -1,5 +1,4 @@
 import cv2
-import numpy
 from pyzbar.pyzbar import decode
 from gpiozero import Buzzer
 
@@ -18,8 +17,8 @@ def barcode_read():
             buzzer.on()
             for barcode in decode(img):
                 barcode_data = barcode.data.decode('utf-8')
-                print(barcode_data)
-        
+                #print(barcode_data)
+                print("BARCODE DETECTED")
                 cam.release()
                 cv2.destroyAllWindows()
                 buzzer.off()
@@ -30,3 +29,5 @@ def barcode_read():
     
         #cv2.imshow('Result',img)
         cv2.waitKey(1)
+
+#barcode_read()
