@@ -7,7 +7,9 @@ import socket
 import time
 
 class Checkout:
-    shop_list = []
+    shop_list = ""
+
+
 # Standard size used for the header message
 header = 64
 # Port and IP Socket settings defined for server
@@ -22,7 +24,6 @@ format = "utf-8"
 
 # Button object defined
 button = Button(16)
-list = []
 
 # Client socket object defined and connected to server address
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -52,19 +53,17 @@ def send(msg):
 def scan():
     print("BUTTON PRESSED")
     # led_control.set_yellow()
-    Checkout.shop_list.append(capture.barcode_read())
+    if Checkout.shop_list == "":
+        Checkout.shop_list = capture.barcode_read()
+    else:
+        Checkout.shop_list = (Checkout.shop_list + "/" + capture.barcode_read())
     print(Checkout.shop_list)
 
 def send_all():
-    for x in Checkout.shop_list:
-        send(x)
-        print("SENT THE FOLLOWING", x)
-        time.sleep(0.5)
-    Checkout.shop_list = []
+    send(Checkout.shop_list)
     print("SENDING SUCCESSFUL")
-    #else:
-        #print("Can't send empty list")
-        #pass
+    Checkout.shop_list = ""
+
 
 
 button.when_pressed = scan
