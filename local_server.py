@@ -51,6 +51,7 @@ def start():
         thread = threading.Thread(target=handle_client, args=(conn, addr)) # New connections varriables, used as arguments for handle function as a thread
         thread.start() # The handle client thread is started so start() can keep listening for new connections
 
+# Define function for sending message to created server instance
 def send(msg):
     # Message encoded 
     message = msg.encode(format)
