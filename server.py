@@ -2,7 +2,6 @@ import socket
 import threading
 import dbConverter
 import subprocess
-from pathlib import Path
 import time
 
 # Standard size used for the header message
