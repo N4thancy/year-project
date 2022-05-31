@@ -59,8 +59,9 @@ def start():
 
 print("SERVER STARTING")
 main_thread = threading.Thread(target = start)
+# Start function which listens and handles new clients
 main_thread.start()
 # Runs the website as a subprocess 
 subprocess.run(['python3', '/home/azureuser/Documents/app.py'])
 
-# Start function which listens and handles new clients
+
