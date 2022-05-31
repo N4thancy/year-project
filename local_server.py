@@ -43,6 +43,7 @@ def handle_client(conn, addr):
             print("MESSAGE RECIEVED: ", msg) # Debug
             send(msg)
             print("-" * 5, "MESSAGE SENT", "-" * 5)
+            
 # Main function starts and listens for new devices 
 def start():
     server.listen() # Server object listens for new connections
