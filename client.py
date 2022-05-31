@@ -6,7 +6,7 @@ header = 64
 # Port and IP Socket settings defined for server
 port = 5050 # Server's definer port
 server_ip = "192.168.137.247"
-print(server_ip) # Debug
+print("CONNECTING TO: ", server_ip) # Debug
 addr = (server_ip, port)
 
 # Format for encoding and decoding messages
@@ -31,18 +31,5 @@ def send(msg):
     time.sleep(0.05) # Time.sleep to create space between messages 
     # Send the main messages
     client.send(message)
-    print(msg) # Debug
-    print(msg_length) # Debug
-
-
-
-test_list = ["Besked 1", "Besked 2", "Besked 3","Besked 4"]
-
-# Run the main send function to send the message "Hej" to the server
-#send("Hej") 
-"""
-for x in test_list:
-    time.sleep(0.5)
-    send(x)
-
-"""
+    print("SENDING MESSAGE: ", msg) # Debug
+    print("THE MESSAGE LENGTH IS: ", msg_length) # Debug
