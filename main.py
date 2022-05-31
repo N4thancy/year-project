@@ -45,23 +45,25 @@ def send(msg):
     time.sleep(0.05) # Time.sleep to create space between messages 
     # Send the main messages
     client.send(message)
-    print("[SENDING MSG] to", server_ip)
-    print("SENDING MESSAGE: ", msg) # Debug
+    print("-" * 5, "SENDING MSG TO: ", server_ip, "-" * 5)
+    print("SENT MESSAGE: ", msg) # Debug
     print("THE MESSAGE LENGTH IS: ", msg_length) # Debug
 
 
 def scan():
-    print("BUTTON PRESSED")
-    # led_control.set_yellow()
+    print("-" * 5, "BUTTON PRESSED", "-" * 5)
+    # led_control.set_yellow() #old 
     if Checkout.shop_list == "":
         Checkout.shop_list = capture.barcode_read()
     else:
         Checkout.shop_list = (Checkout.shop_list + "/" + capture.barcode_read())
+    print("CURRENT SHOPPING LIST: ")
     print(Checkout.shop_list)
 
 def send_all():
     send(Checkout.shop_list)
     print("SENDING SUCCESSFUL")
+    print("-" * 15)
     Checkout.shop_list = ""
 
 
