@@ -16,7 +16,7 @@ header = 64
 port = 5050 # Server's definer port
 
 server_ip = "192.168.137.247" #LOCAL SERVER IP
-print(server_ip) # Debug
+print("CONNECTING TO: ", server_ip) # Debug
 addr = (server_ip, port)
 
 # Format for encoding and decoding messages
@@ -46,8 +46,8 @@ def send(msg):
     # Send the main messages
     client.send(message)
     print("[SENDING MSG] to", server_ip)
-    print(msg) # Debug
-    print(msg_length) # Debug
+    print("SENDING MESSAGE: ", msg) # Debug
+    print("THE MESSAGE LENGTH IS: ", msg_length) # Debug
 
 
 def scan():
