@@ -13,13 +13,14 @@ ip = socket.gethostbyname(socket.gethostname())
 print(ip) #Debug
 addr = (ip, port)
 
+# Class for holding the list of barcodes 
 class Data:
 	new_list = []
 
 # Format for encoding and decoding messages
 format = "utf-8"
 
-# Server socket object defined
+# Server socket object defined 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(addr)
 
@@ -58,10 +59,9 @@ def start():
 		thread.start()
 
 print("SERVER STARTING")
+# creates a thread for running the main start function of the database handling, so a subprocess can be started to run the website
 main_thread = threading.Thread(target = start)
 # Start function which listens and handles new clients
 main_thread.start()
 # Runs the website as a subprocess 
 subprocess.run(['python3', '/home/azureuser/Documents/app.py'])
-
-
