@@ -3,6 +3,7 @@ import threading
 import dbConverter
 import subprocess
 from pathlib import Path
+import time
 
 # Standard size used for the header message
 header = 64
@@ -30,6 +31,7 @@ def handle_client(conn, addr):
 	while connection is True: # To possibly add a connection closed later.
 		msg_one = conn.recv(header).decode(format)
 		if msg_one:  # if message received isn't null run the following
+			print("NEW MESSAGE")
 			msg_length = int(msg_one)
 			msg = conn.recv(msg_length).decode(format)
 			print(msg) # Debug
@@ -37,9 +39,15 @@ def handle_client(conn, addr):
 
 			# Splits the received data by every / and places the split segments in a list
 			Data.new_list = msg.split("/")
+			print("RECIEVES CHECKOUTS:", len(Data.new_list))
+			print(Data.new_list)
 			# Goes through the list and runs it through dbConverter. 
 			for x in Data.new_list:
+				print("-" * 5, "NEW INPUT", "-" * 5)
+				print("Updating database with:", x)
 				dbConverter.barcode_Split(x)
+				print("-" * 15)
+				time.sleep(0.05)
 
 			
 # Main function starts and listens for new devices
@@ -50,10 +58,10 @@ def start():
 		thread = threading.Thread(target=handle_client, args=(conn, addr))
 		thread.start()
 
-print("Server starting")
-
+print("SERVER STARTING")
+main_thread = threading.Thread(target = start)
+main_thread.start()
 # Runs the website as a subprocess 
 subprocess.run(['python3', '/home/azureuser/Documents/app.py'])
 
 # Start function which listens and handles new clients
-start()
