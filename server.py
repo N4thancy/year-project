@@ -47,8 +47,8 @@ def handle_client(conn, addr):
 				print("Updating database with:", x)
 				dbConverter.barcode_Split(x)
 				print("-" * 15)
-				time.sleep(0.05)
-
+				time.sleep(0.2)
+			
 			
 # Main function starts and listens for new devices
 def start():
