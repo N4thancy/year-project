@@ -1,7 +1,6 @@
 from gpiozero import Button
 import time
 import capture as capture
-# import led_control
 import client
 import socket
 import time
@@ -24,6 +23,7 @@ format = "utf-8"
 
 # Button object defined
 button = Button(16)
+second_button = Button(20)
 
 # Client socket object defined and connected to server address
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -52,7 +52,6 @@ def send(msg):
 
 def scan():
     print("-" * 5, "BUTTON PRESSED", "-" * 5)
-    # led_control.set_yellow() #old 
     if Checkout.shop_list == "":
         Checkout.shop_list = capture.barcode_read()
     else:
@@ -69,7 +68,7 @@ def send_all():
 
 
 button.when_pressed = scan
-button.when_held = send_all
+second_button.when_pressed = send_all
 
 print("PROGRAM STARTET")
 while True: 
